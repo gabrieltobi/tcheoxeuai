@@ -1,3 +1,15 @@
 page-login {
-
+    .grid {
+        height: 100%;
+    }
+    #logo-area {
+        flex: 1;
+    }
+    #botoes {
+        height: 45%;
+        flex-direction: column;
+        .button {
+            margin: 14px 0;
+        }
+    }
 }
