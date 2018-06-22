@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Região Norte (1/1)</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="help"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="http://via.placeholder.com/350x150" />
+    <ion-card-content>
+      <ion-card-title>
+        Pergunta
+      </ion-card-title>
+      <p>
+        {{pergunta}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <div padding>
+    <button ion-button block *ngFor='let alternativa of alternativas' (click)="responder(alternativa)">
+      {{alternativa.alternativa}}
+    </button>
+  </div>
+</ion-content>
