@@ -14,6 +14,7 @@ import localePt from '@angular/common/locales/pt';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AppData } from '../classes/AppData';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -47,6 +48,7 @@ export const firebaseConfig: FirebaseAppConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     AngularFireAuth,
+    AppData
   ]
 })
 export class AppModule {}

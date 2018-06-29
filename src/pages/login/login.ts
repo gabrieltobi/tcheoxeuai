@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 import { AngularFirestore } from 'angularfire2/firestore';
+import Pessoa from '../../classes/Pessoa';
 
 @IonicPage()
 @Component({
@@ -17,10 +18,9 @@ export class LoginPage {
     entrarComFacebook() {
         this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
             .then(userCredential => {
-                this.afs.collection<any>('pessoas').add({
+                this.afs.doc<Pessoa>(`pessoas/${userCredential.user.uid}`).set({
                     pessoa: 'Pessoa Teste',
                     email: 'teste@gmail.com',
-                    uid: userCredential.user.uid
                 })
             })
     }
