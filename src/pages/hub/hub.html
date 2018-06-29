@@ -6,8 +6,10 @@
     <h2>{{pessoa.pessoa}}</h2>
     <p>123 pontos</p>
   </ion-item>
+  <div padding>
 
-  <h2>Você está na região XDB</h2>
+  <h2>Você está na região {{pessoa.pergunta.regiao}} </h2>
 
   <button ion-button block (click)="jogar()">Jogar</button>
+  </div>
 </ion-content>
