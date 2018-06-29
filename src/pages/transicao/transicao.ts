@@ -7,7 +7,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'transicao.html',
 })
 export class TransicaoPage {
+  resposta: string = 'Errado';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.resposta =   this.navParams.get('resposta');
   }
 
   continuar() {

@@ -24,7 +24,9 @@ export class QuestaoPage {
 
   responder(alternativa) {
     if (alternativa.correta) {
-      this.navCtrl.push('TransicaoPage');
+      this.navCtrl.push('TransicaoPage', {'resposta':'Correta'});
+    } else {
+      this.navCtrl.push('TransicaoPage', {'resposta':'Incorreta'});
     }
   }
 }
