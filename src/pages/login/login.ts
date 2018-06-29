@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -11,8 +11,7 @@ import Pessoa from '../../classes/Pessoa';
     templateUrl: 'login.html',
 })
 export class LoginPage {
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     }
 
     entrarComFacebook() {
@@ -29,8 +28,6 @@ export class LoginPage {
         this.afAuth
             .auth
             .signInWithEmailAndPassword('gabrieltubiass@gmail.com', '123456')
-            .catch(err => {
-                console.log('Something went wrong:', err.message);
-            });
+            .catch(console.error);
     }
 }
