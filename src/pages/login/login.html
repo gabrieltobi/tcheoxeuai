@@ -5,12 +5,12 @@
     </ion-row>
 
     <ion-row id="botoes" align-items-center justify-content-center>
-      <button ion-button block icon-start color="facebook">
+      <button ion-button block icon-start color="facebook" (click)="entrarComFacebook()">
         <ion-icon name="logo-facebook"></ion-icon>
         Entrar
       </button>
 
-      <button ion-button block (click)="logar()">Entrar Como Visitante</button>
+      <button ion-button block (click)="entrarComoConvidado()">Entrar Como Visitante</button>
     </ion-row>
   </ion-grid>
 </ion-content>
