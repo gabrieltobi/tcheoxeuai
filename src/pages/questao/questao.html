@@ -1,15 +1,15 @@
 <ion-header>
-  <ion-navbar hideBackButton>
+  <ion-navbar color="primary" hideBackButton>
     <ion-buttons start>
-      <button ion-button icon-only>
-        <ion-icon name="more"></ion-icon>
+      <button ion-button icon-only (click)="voltar()">
+        <ion-icon name="home"></ion-icon>
       </button>
     </ion-buttons>
 
-    <ion-title>Região Norte (1/1)</ion-title>
+    <ion-title>{{regiaoNome}} ({{perguntasRespondidas.length}}/{{perguntas.length}})</ion-title>
 
-    <ion-buttons end>
-      <button ion-button icon-only>
+    <ion-buttons end *ngIf="pergunta.dica">
+      <button ion-button icon-only (click)="exibirDica()">
         <ion-icon name="help"></ion-icon>
       </button>
     </ion-buttons>
@@ -17,21 +17,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <img src={{imagem}} />
-    <ion-card-content>
-      <ion-card-title>
-        Pergunta
-      </ion-card-title>
-      <p>
-        {{pergunta}}
-      </p>
-    </ion-card-content>
-  </ion-card>
+  <div *ngIf="!todasRespondidas">
+    <ion-card class="pergunta">
+      <div [style.backgroundImage]="pergunta.imagem ? 'url(' + pergunta.imagem + ')' : false" class="imagem"></div>
+      <ion-card-content>
+        <p>
+          {{pergunta.pergunta}}
+        </p>
+      </ion-card-content>
+    </ion-card>
 
-  <div padding>
-    <button ion-button block *ngFor='let alternativa of alternativas' (click)="responder(alternativa)">
-      {{alternativa.alternativa}}
+    <div padding>
+      <button ion-button block *ngFor='let alternativa of pergunta.alternativas' (click)="responder(alternativa)">
+        {{alternativa.alternativa}}
+      </button>
+    </div>
+  </div>
+
+  <div class="todas-respondidas" *ngIf="todasRespondidas" ion-row align-items-center justify-content-center text-center padding>
+    <ion-icon color="secondary" name="checkmark-circle-outline"></ion-icon>
+    <h2 ion-text color="secondary">Você respondeu todas as perguntas da {{regiaoNome}}</h2>
+
+    <button ion-button block (click)="voltar()">
+      Escolher Outra Região
     </button>
   </div>
 </ion-content>

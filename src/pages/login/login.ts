@@ -17,17 +17,29 @@ export class LoginPage {
     entrarComFacebook() {
         this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
             .then(userCredential => {
-                this.afs.doc<Pessoa>(`pessoas/${userCredential.user.uid}`).set({
-                    pessoa: 'Pessoa Teste',
-                    email: 'teste@gmail.com',
-                })
+                if (userCredential.additionalUserInfo.isNewUser) {
+                    this.afs.doc<Pessoa>(`pessoas/${userCredential.user.uid}`).set({
+                        pessoa: userCredential.user.displayName,
+                        email: userCredential.user.email,
+                        fotourl: userCredential.user.photoURL,
+                        datacriacao: firebase.firestore.FieldValue.serverTimestamp(),
+                        pontos: 0
+                    })
+                }
             })
     }
 
-    entrarComoConvidado() {
+    entrarComoVisitante() {
         this.afAuth
             .auth
-            .signInWithEmailAndPassword('gabrieltubiass@gmail.com', '123456')
+            .signInAnonymously()
+            .catch(console.error);
+    }
+
+    demonstracao() {
+        this.afAuth
+            .auth
+            .signInWithEmailAndPassword('admin@tcheoxeuai.com', '123465')
             .catch(console.error);
     }
 }

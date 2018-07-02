@@ -1,15 +1,94 @@
 <ion-content>
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="https://randomuser.me/api/portraits/lego/3.jpg">
-    </ion-avatar>
-    <h2>{{pessoa.pessoa}}</h2>
-    <p>123 pontos</p>
-  </ion-item>
-  <div padding>
+  <ion-list>
+    <ion-item color="primary">
+      <ion-avatar item-start>
+        <img [src]="pessoa.fotourl || './assets/imgs/user-placeholder.png'">
+      </ion-avatar>
+      <h2>{{pessoa.pessoa || '...'}}</h2>
+      <p>{{pessoa.pontos || 0}} pontos</p>
+      <ion-icon name="stats" item-end (click)="ranking()"></ion-icon>
+    </ion-item>
+  </ion-list>
 
-  <h2>Você está na região {{pessoa.pergunta.regiao}} </h2>
+  <div class="cards-regioes">
+    <ion-card ion-row align-items-center (click)="jogar(Regioes.Sul)">
+      <ion-col>
+        <ion-card-header>
+          <div class="card-title">Região Sul</div>
+        </ion-card-header>
+        <ion-card-content [ngPlural]="pessoa.respondidas_1.length">
+          <ng-template class="card-subtitle" ngPluralCase="=0">Nenhuma pergunta respondida</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="=1">Uma pergunta respondida</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="other">{{pessoa.respondidas_1.length}} perguntas respondidas</ng-template>
+        </ion-card-content>
+      </ion-col>
+      <ion-col col-auto>
+        <img class="representacao" src="./assets/imgs/regioes/sul.png" alt="Região Sul">
+      </ion-col>
+    </ion-card>
 
-  <button ion-button block (click)="jogar()">Jogar</button>
+    <ion-card ion-row align-items-center (click)="jogar(Regioes.Sudeste)">
+      <ion-col>
+        <ion-card-header>
+          <div class="card-title">Região Sudeste</div>
+        </ion-card-header>
+        <ion-card-content [ngPlural]="pessoa.respondidas_2.length">
+          <ng-template class="card-subtitle" ngPluralCase="=0">Nenhuma pergunta respondida</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="=1">Uma pergunta respondidas</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="other">{{pessoa.respondidas_2.length}} perguntas respondidas</ng-template>
+        </ion-card-content>
+      </ion-col>
+      <ion-col col-auto>
+        <img class="representacao" src="./assets/imgs/regioes/sudeste.png" alt="Região Sudeste">
+      </ion-col>
+    </ion-card>
+
+    <ion-card ion-row align-items-center (click)="jogar(Regioes.CentroOeste)">
+      <ion-col>
+        <ion-card-header>
+          <div class="card-title">Região Centro Oeste</div>
+        </ion-card-header>
+        <ion-card-content [ngPlural]="pessoa.respondidas_3.length">
+          <ng-template class="card-subtitle" ngPluralCase="=0">Nenhuma pergunta respondida</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="=1">Uma pergunta respondidas</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="other">{{pessoa.respondidas_3.length}} perguntas respondidas</ng-template>
+        </ion-card-content>
+      </ion-col>
+      <ion-col col-auto>
+        <img class="representacao" src="./assets/imgs/regioes/centrooeste.png" alt="Região Centro Oeste">
+      </ion-col>
+    </ion-card>
+
+    <ion-card ion-row align-items-center (click)="jogar(Regioes.Nordeste)">
+      <ion-col>
+        <ion-card-header>
+          <div class="card-title">Região Nordeste</div>
+        </ion-card-header>
+        <ion-card-content [ngPlural]="pessoa.respondidas_4.length">
+          <ng-template class="card-subtitle" ngPluralCase="=0">Nenhuma pergunta respondida</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="=1">Uma pergunta respondidas</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="other">{{pessoa.respondidas_4.length}} perguntas respondidas</ng-template>
+        </ion-card-content>
+      </ion-col>
+      <ion-col col-auto>
+        <img class="representacao" src="./assets/imgs/regioes/nordeste.png" alt="Região Nordeste">
+      </ion-col>
+    </ion-card>
+
+    <ion-card ion-row align-items-center (click)="jogar(Regioes.Norte)">
+      <ion-col>
+        <ion-card-header>
+          <div class="card-title">Região Norte</div>
+        </ion-card-header>
+        <ion-card-content [ngPlural]="pessoa.respondidas_5.length">
+          <ng-template class="card-subtitle" ngPluralCase="=0">Nenhuma pergunta respondida</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="=1">Uma pergunta respondidas</ng-template>
+          <ng-template class="card-subtitle" ngPluralCase="other">{{pessoa.respondidas_5.length}} perguntas respondidas</ng-template>
+        </ion-card-content>
+      </ion-col>
+      <ion-col col-auto>
+        <img class="representacao" src="./assets/imgs/regioes/norte.png" alt="Região Norte">
+      </ion-col>
+    </ion-card>
   </div>
 </ion-content>

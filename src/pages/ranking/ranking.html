@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Ranking</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let pe of pessoas" [color]="pessoa.key === pe.key ? 'secondary' : ''">
+      <ion-avatar item-start>
+        <img [src]="pe.fotourl || './assets/imgs/user-placeholder.png'">
+      </ion-avatar>
+      <h2>{{pe.pessoa || '...'}}</h2>
+      <p>{{pe.pontos || 0}} pontos</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

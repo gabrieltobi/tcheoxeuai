@@ -1,3 +1,22 @@
 page-questao {
+    .pergunta {
+        .imagem {
+            height: 300px;
+            background-image: url('../assets/imgs/pergunta-placeholder.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
 
+    .todas-respondidas {
+        height: 100%;
+        flex-direction: column;
+        .icon {
+            font-size: 12em;
+        }
+        .button {
+            margin-top: 68px;
+        }
+    }
 }

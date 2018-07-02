@@ -1,10 +1,14 @@
 import FirebaseItem from "./FirebaseItem";
-import Pergunta from "./Pergunta";
 
 export default class Pessoa extends FirebaseItem {
     email: string = ''
     pessoa: string = ''
-    // pergunta?: Pergunta = Pergunta()?
-    pergunta?: string = '1'
-
+    fotourl: string = ''
+    datacriacao: number | Object = null
+    pontos: number = null
+    respondidas_1?: string[] = []
+    respondidas_2?: string[] = []
+    respondidas_3?: string[] = []
+    respondidas_4?: string[] = []
+    respondidas_5?: string[] = []
 }

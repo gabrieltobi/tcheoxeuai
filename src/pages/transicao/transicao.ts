@@ -7,13 +7,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'transicao.html',
 })
 export class TransicaoPage {
-  resposta: string = 'Errado';
+  acertou: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.resposta =   this.navParams.get('resposta');
+    this.acertou = this.navParams.get('acertou');
   }
 
-  continuar() {
+  proximaPergunta() {
+    this.navCtrl.popTo('QuestaoPage');
+  }
+
+  mudarRegiao() {
     this.navCtrl.push('HubPage');
   }
 }

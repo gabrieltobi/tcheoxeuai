@@ -8,4 +8,5 @@ export default class Pergunta extends FirebaseItem {
     peso: number = 0
     regiao: Regioes = null
     alternativas: Alternativa[] = []
+    dica?: string = ''
 }
